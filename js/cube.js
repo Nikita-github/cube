@@ -5,10 +5,10 @@ var rotation = 1;
 init();
 animate();
 
-// Фунция инициализации визуализатора, сцены, плоскости, куба, света сцены, камеры.
+// Р¤СѓРЅС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РІРёР·СѓР°Р»РёР·Р°С‚РѕСЂР°, СЃС†РµРЅС‹, РїР»РѕСЃРєРѕСЃС‚Рё, РєСѓР±Р°, СЃРІРµС‚Р° СЃС†РµРЅС‹, РєР°РјРµСЂС‹.
 function init() {
 	
-	// Создаем и настриваем визуализатор
+	// РЎРѕР·РґР°РµРј Рё РЅР°СЃС‚СЂРёРІР°РµРј РІРёР·СѓР°Р»РёР·Р°С‚РѕСЂ
 	renderer = new THREE.WebGLRenderer();
 		renderer.setPixelRatio( window.devicePixelRatio );
 		renderer.setSize( window.innerWidth, window.innerHeight );
@@ -16,16 +16,16 @@ function init() {
 		renderer.shadowMapEnabled = true;
 		document.body.appendChild( renderer.domElement );
 	
-	// Создаем сцену
+	// РЎРѕР·РґР°РµРј СЃС†РµРЅСѓ
 	scene = new THREE.Scene();
 	
-	// Создаем и настраиваем освещения
+	// РЎРѕР·РґР°РµРј Рё РЅР°СЃС‚СЂР°РёРІР°РµРј РѕСЃРІРµС‰РµРЅРёСЏ
 	var spotLight = new THREE.SpotLight( 0xFFFFFF );
 		spotLight.position.set( -400, 600, -100 );
 		spotLight.castShadow = true;
 		scene.add(spotLight);
 	
-	// Создаем и настраиваем плоскость для тени
+	// РЎРѕР·РґР°РµРј Рё РЅР°СЃС‚СЂР°РёРІР°РµРј РїР»РѕСЃРєРѕСЃС‚СЊ РґР»СЏ С‚РµРЅРё
 	var planeGeometry = new THREE.PlaneBufferGeometry(800,800);
 	var planeMaterial = new THREE.MeshBasicMaterial({ color: 0xEEEEEE});
 	plane = new THREE.Mesh(planeGeometry,planeMaterial);
@@ -36,7 +36,7 @@ function init() {
 		plane.position.z = 0;
 		scene.add(plane);
 	
-	// Создаем и настраиваем куб
+	// РЎРѕР·РґР°РµРј Рё РЅР°СЃС‚СЂР°РёРІР°РµРј РєСѓР±
 	var cubeGeometry = new THREE.BoxGeometry(200,200,200);
 	var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0x0ca745 });
 	cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
@@ -44,19 +44,19 @@ function init() {
 		cube.position.y = 200;
 		scene.add(cube);
 	
-	// Создаем и настраиваем камеру
+	// РЎРѕР·РґР°РµРј Рё РЅР°СЃС‚СЂР°РёРІР°РµРј РєР°РјРµСЂСѓ
 	camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight , 1, 1000);
 		camera.position.x = -300;
 		camera.position.y = 400;
 		camera.position.z = 150;
 		camera.lookAt(cube.position);
 	
-	// Следим за изменением размера окна просмотра
+	// РЎР»РµРґРёРј Р·Р° РёР·РјРµРЅРµРЅРёРµРј СЂР°Р·РјРµСЂР° РѕРєРЅР° РїСЂРѕСЃРјРѕС‚СЂР°
 	window.addEventListener( 'resize', onWindowResize, false );
 
 }
 
-// Функция настройки камеры и визуализатора при изменении размера окна просмотра
+// Р¤СѓРЅРєС†РёСЏ РЅР°СЃС‚СЂРѕР№РєРё РєР°РјРµСЂС‹ Рё РІРёР·СѓР°Р»РёР·Р°С‚РѕСЂР° РїСЂРё РёР·РјРµРЅРµРЅРёРё СЂР°Р·РјРµСЂР° РѕРєРЅР° РїСЂРѕСЃРјРѕС‚СЂР°
 function onWindowResize() {
 
 	camera.aspect = window.innerWidth / window.innerHeight;
@@ -66,7 +66,7 @@ function onWindowResize() {
 
 }
 
-// Функция анимации куба
+// Р¤СѓРЅРєС†РёСЏ Р°РЅРёРјР°С†РёРё РєСѓР±Р°
 function animate() {
 
 	requestAnimationFrame( animate );
@@ -76,7 +76,7 @@ function animate() {
 	renderer.render( scene, camera );
 }
 
-// Функция установки направления вращения
+// Р¤СѓРЅРєС†РёСЏ СѓСЃС‚Р°РЅРѕРІРєРё РЅР°РїСЂР°РІР»РµРЅРёСЏ РІСЂР°С‰РµРЅРёСЏ
 function setRotation() {
 	
 	rotation = ( rotation == 1 ) ? -1 : 1;
